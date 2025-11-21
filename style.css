@@ -1,119 +1,92 @@
-/* Hero logo - always visible, larger, responsive */
-#hero-logo {
-  max-width: 720px;
-  width: 90%;
-  margin: 0 auto 40px;
+/* Header */
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+}
+
+.theme-toggle {
+  display: none !important;
+}
+
+/* Sky Blue theme enhancements */
+body.theme-skyblue .sl {
+  opacity: .35;
+  stroke: #2b8cff;
+}
+
+body.theme-skyblue ul.check li::before {
+  background: #2b8cff;
+}
+
+body.theme-skyblue a {
+  color: #2b8cff;
+}
+
+body.theme-skyblue .nav a:hover {
+  color: #2b8cff;
+}
+
+body.theme-skyblue .head {
+  background: rgba(245, 249, 255, 0.85);
+  border-bottom-color: #dde6f5;
+}
+
+
+/* Brand/logo */
+.brand img {
+  height: 36px;
   display: block;
 }
 
-
-/* Mobile tweak */
-@media (max-width: 768px) {
-  #hero-logo {
-    width: 95%;
-    max-width: 440px;
-  }
-}
-
-/* Base layout */
-.head {
+/* Nav links */
+.nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: relative;
+  gap: 22px;
 }
-
-/* Logo adjustments */
-.logo {
-  height: 80px;
-  width: auto;
-  padding-top: 5px;
-}
-
-/* Mobile */
-@media (max-width: 900px) {
-  .logo {
-    height: 55px;
-    padding-top: 0;
-  }
-}
-
 .nav a {
+  color: var(--ink);
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.nav a:hover {
+  color: var(--accent);
 }
 
-/* ----------------------- */
-/*     MOBILE STYLES       */
-/* ----------------------- */
 
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-}
-
-.nav-toggle span {
-  width: 28px;
-  height: 3px;
-  background: currentColor;
-  transition: 0.3s ease;
-}
-
-/* Show hamburger on mobile */
+/* Mobile menu */
 @media (max-width: 900px) {
-
-  .nav-toggle {
-    display: flex;
-  }
-
   .nav {
-    display: none;
+    position: fixed;
+    top: 64px;
+    right: -100%;
+    height: calc(100vh - 64px);
+    width: 240px;
+    background: var(--panel);
     flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--panel, white);
-    width: 100%;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    animation: slideDown 0.3s ease forwards;
+    padding: 24px;
+    gap: 16px;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
   }
-
-  .nav.show {
-    display: flex;
-  }
-
-  .nav a {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--line, #ddd);
-  }
-
-  /* Hamburger animation to X */
-  .nav-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-  }
-  .nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-  }
+ 
 }
 
-/* Slide down animation */
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-
+/* ===========================
+   LINKEDIN POP-UP / ICON
+=========================== */
 .pop-linkedin {
   margin-top: 6px;
   display: inline-flex;
@@ -133,228 +106,87 @@
   opacity: 1;
 }
 
-
-/* Ensure team bio modal always readable */
-.modal-content {
-  background: #ffffff !important;
-  color: #111318 !important;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 24px 60px rgba(0,0,0,.25);
-}
-
-.modal-content h3,
-.modal-content p,
-.modal-content li,
-.modal-content .pop-name,
-.modal-content .pop-role {
-  color: #111318 !important;
-}
-
-.modal-content .pop-role {
-  color: #58606b !important;
-  font-weight: 600;
-}
-
-/* Cards - always white, clickable */
-.card {
-  background: #ffffff !important;
-  color: #111318 !important;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
-  border-color: #d0d7e6;
-}
-
-/* Clickable cue */
-.card::after {
-  content: "→";
-  display: block;
+/* ===========================
+   BRAND TEXT
+=========================== */
+.brand {
+  text-decoration: none;
+  color: #111318;
+  font-weight: 800;
   font-size: 14px;
-  color: #58606b;
-  margin-top: 8px;
-  opacity: 0.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-/* Dark Blue theme global text contrast */
-body.theme-darkblue h1,
-body.theme-darkblue h2,
-body.theme-darkblue h3,
-body.theme-darkblue p,
-body.theme-darkblue li,
-body.theme-darkblue .lead {
-  color: #eef3ff !important;
+/* ===========================
+   MOBILE NAVIGATION
+=========================== */
+.nav-toggle {
+  display: none;
 }
 
-/* Dark Blue accent tweaks */
-body.theme-darkblue ul.check li::before {
-  background: #75aaff;
+@media (max-width: 900px) {
+  .nav-toggle {
+    background: #ffe082 !important; /* Debug: yellow background */
+    border: 2px solid #ff9800 !important; /* Debug: orange border */
+    z-index: 10001 !important;
+  }
 }
 
-body.theme-darkblue a {
-  color: #75aaff;
+@media (max-width: 900px) {
+  /* Hamburger button */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    position: relative;
+    z-index: 10000;
+  }
+
+  .nav-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Transform hamburger to X when active */
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Show nav when toggled (slide in from right) */
+  .nav.show {
+    right: 0;
+    display: flex;
+  }
 }
 
-/* Force all team cards to be solid white, always readable */
-.section .card {
-  background: #ffffff !important;
-  color: #111318 !important;
-  border: 1px solid #d0d7e6 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 14px rgba(0,0,0,.15) !important;
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.section .card h3,
-.section .card p,
-.section .card .role {
-  color: #111318 !important;
-}
+/* Optional: dark header text color against light bg */
+.brand{ text-decoration:none; color:#111318; font-weight:800; font-size:14px; letter-spacing:.08em; text-transform:uppercase; }
 
-/* Role subtler */
-.section .card .role {
-  color: #58606b !important;
-}
-
-/* Modal must always be dark-on-white */
-#popup .modal-content {
-  background: #ffffff !important;
-  color: #111318 !important;
-  border-radius: 12px !important;
-  border: 1px solid #d0d7e6 !important;
-  box-shadow: 0 24px 60px rgba(0,0,0,.25) !important;
-}
-
-#popup .modal-content h3,
-#popup .modal-content p,
-#popup .modal-content li,
-#popup .modal-content .pop-role,
-#popup .modal-content .pop-name {
-  color: #111318 !important;
-}
-
-#popup .modal-content .pop-role {
-  color: #58606b !important;
-}
-
-/* === FORCE DETAILS PANELS TO BE SOLID WHITE === */
-details {
-  background: #ffffff !important;
-  color: #111318 !important;
-  border: 1px solid #d0d7e6 !important;
-  border-radius: 12px !important;
-  padding: 12px !important;
-  box-shadow: 0 4px 14px rgba(0,0,0,.15) !important;
-}
-
-/* Ensure summary is readable */
-details summary {
-  color: #111318 !important;
-  font-weight: 700 !important;
-  cursor: pointer;
-}
-
-/* When opened, keep content dark on white */
-details[open] p,
-details[open] li {
-  color: #111318 !important;
-}
-/* FORCE details/summary panels to be solid white across all themes */
-body.theme-darkblue details,
-body.theme-darkblue details summary,
-body.theme-darkblue details[open],
-body.theme-darkblue details[open] * {
-  background: #ffffff !important;
-  color: #111318 !important;
-  border: 1px solid #d0d7e6 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 14px rgba(0,0,0,.2) !important;
-}
-
-/* Make summary always clickable and bold */
-body.theme-darkblue details summary {
-  font-weight: 700 !important;
-  cursor: pointer !important;
-}
-
-/* Optional: add chevron arrow that rotates when open */
-body.theme-darkblue details summary::marker {
-  content: "▶ " !important;
-  color: #111318 !important;
-}
-body.theme-darkblue details[open] summary::marker {
-  content: "▼ " !important;
-  color: #111318 !important;
-}
-
-/* ============================= */
-/* FORCE WHITE BACKGROUNDS + DARK TEXT */
-/* ============================= */
-
-/* Team bios (cards + modals) */
-.card,
-.card h3,
-.card p,
-.card .role,
-.modal-content,
-.modal-content h3,
-.modal-content p,
-.modal-content li,
-.modal-content .pop-role,
-.modal-content .pop-name {
-  background: #ffffff !important;  /* always solid white */
-  color: #111318 !important;       /* always dark text */
-}
-
-/* Ensure role subtitles are readable */
-.card .role,
-.modal-content .pop-role {
-  color: #58606b !important; /* muted dark gray */
-}
-
-/* Team cards hover effect (keep clickable feel) */
-.card {
-  cursor: pointer;
-  border: 1px solid #d0d7e6 !important;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
-}
-
-/* ============================= */
-/* Projects & CAF accordion panels */
-/* ============================= */
-details,
-details[open],
-details summary,
-details[open] * {
-  background: #ffffff !important;  /* solid white panels */
-  color: #111318 !important;       /* dark ink for readability */
-  border: 1px solid #d0d7e6 !important;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.1) !important;
-  padding: 8px 12px;
-}
-
-/* Make summary headings stand out */
-details summary {
-  font-weight: 700 !important;
-  cursor: pointer !important;
-}
-
-/* Optional: chevron markers for clarity */
-details summary::marker {
-  content: "▶ " !important;
-  color: #111318 !important;
-}
-details[open] summary::marker {
-  content: "▼ " !important;
-  color: #111318 !important;
-}
+.nav a{ color:#111318; text-decoration:none; margin-left:22px; font-size:14px; font-weight:600; opacity:.9; }
+.nav a:hover{ color:#2b8cff; }
