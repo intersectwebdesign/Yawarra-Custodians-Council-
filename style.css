@@ -1,0 +1,164 @@
+/* Header */
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+}
+
+/* Brand/logo */
+.brand img {
+  height: 36px;
+  display: block;
+}
+
+/* Nav links */
+.nav {
+  display: flex;
+  gap: 22px;
+}
+.nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.nav a:hover {
+  color: var(--accent);
+}
+
+
+/* Mobile menu */
+@media (max-width: 900px) {
+  .nav {
+    position: fixed;
+    top: 64px;
+    right: -100%;
+    height: calc(100vh - 64px);
+    width: 240px;
+    background: var(--panel);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+  }
+ 
+}
+
+/* ===========================
+   LINKEDIN POP-UP / ICON
+=========================== */
+.pop-linkedin {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.linkedin-icon {
+  width: 22px;
+  height: 22px;
+  fill: #0A66C2;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.linkedin-icon:hover {
+  opacity: 1;
+}
+
+/* ===========================
+   BRAND TEXT
+=========================== */
+.brand {
+  text-decoration: none;
+  color: #111318;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===========================
+   MOBILE NAVIGATION
+=========================== */
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    background: #ffe082 !important; /* Debug: yellow background */
+    border: 2px solid #ff9800 !important; /* Debug: orange border */
+    z-index: 10001 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Hamburger button */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    position: relative;
+    z-index: 10000;
+  }
+
+  .nav-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Transform hamburger to X when active */
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Show nav when toggled (slide in from right) */
+  .nav.show {
+    right: 0;
+    display: flex;
+  }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: dark header text color against light bg */
+.brand{ text-decoration:none; color:#111318; font-weight:800; font-size:14px; letter-spacing:.08em; text-transform:uppercase; }
+
+.nav a{ color:#111318; text-decoration:none; margin-left:22px; font-size:14px; font-weight:600; opacity:.9; }
+.nav a:hover{ color:#2b8cff; }
